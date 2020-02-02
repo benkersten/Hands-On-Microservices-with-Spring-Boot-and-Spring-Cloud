@@ -9,6 +9,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import reactor.core.publisher.Mono;
 import se.magnus.api.composite.product.ProductAggregate;
 import se.magnus.api.composite.product.RecommendationSummary;
 import se.magnus.api.composite.product.ReviewSummary;
@@ -126,7 +128,7 @@ public class ProductCompositeServiceApplicationTests {
 	private void postAndVerifyProduct(ProductAggregate compositeProduct, HttpStatus expectedStatus) {
 		client.post()
 			.uri("/product-composite")
-			.body(just(compositeProduct), null)
+			.body(just(compositeProduct), ProductAggregate.class)
 			.exchange()
 			.expectStatus().isEqualTo(expectedStatus);
 	}
