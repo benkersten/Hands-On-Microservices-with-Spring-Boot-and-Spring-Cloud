@@ -27,6 +27,8 @@ repositories {
 	maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
 }
 
+// TODO @EnableSwagger2WebFlux requires 3.0.0-SNAPSHOT, not 2.9.2. 
+// from 2018. Why not maintained? Alternatives?
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-webflux')
 	implementation('io.springfox:springfox-swagger2:3.0.0-SNAPSHOT')
